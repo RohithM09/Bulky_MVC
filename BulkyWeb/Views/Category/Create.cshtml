@@ -9,14 +9,17 @@
             </h2>
             <hr/>
         </div>
+        @* <div asp-validation-summary="None"></div> *@
         <div class="mb-3 row p-1">
             <label class="p-0" asp-for="Name"></label>
             <input asp-for="Name" class="form-control">
+            <span asp-validation-for="Name" class="text-danger"></span>
 
         </div>
         <div class="mb-3 row p-1">
             <label class="p-0" asp-for="DisplayOrder"></label>
             <input asp-for="DisplayOrder" class="form-control">
+            <span asp-validation-for="DisplayOrder" class="text-danger"></span>
 
         </div>
         <div class="row">
@@ -34,11 +37,11 @@
 
 
     </div>
-
-
-
-
-
-
-
 </form>
+
+@section scripts
+{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}
