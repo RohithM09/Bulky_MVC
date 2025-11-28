@@ -1,4 +1,7 @@
-﻿@model List<Category>
+﻿@page
+@model BulkyWebRazor_Temp.Pages.Categories.IndexModel
+
+
 @if(TempData["success"]!=null)
 {
     <h2>@TempData["success"]</h2>
@@ -9,7 +12,7 @@
             <h2 class="text-primary">Category List</h2>
         </div>
         <div class="col-6 text-end">
-            <a asp-controller="Category" asp-action="Create" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Create New Category</a>
+            <a asp-page="/Categories/Create" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Create New Category</a>
         </div>
 
     </div>
@@ -27,15 +30,15 @@
         </tr>
     </thead>
     <tbody>
-        @foreach(var obj in Model.OrderBy(u=>u.DisplayOrder))
+        @foreach(var obj in Model.Objcategorylist.OrderBy(u=>u.DisplayOrder))
         {
             <tr>
                 <td>@obj.Name</td>
             <td>@obj.DisplayOrder</td>
             <td>
                 <div class="w-75 btn-group" role="group">
-                            <a asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-primary mx-2"><i class="bi bi-pencil-square"></i>Edit</a>
-                            <a asp-controller="Category" asp-action="Delete" class="btn btn-danger mx-2" asp-route-id="@obj.Id"><i class="bi bi-trash-fill"></i>Delete</a>
+                            <a asp-page="/categories/edit" asp-route-id="@obj.Id" class="btn btn-primary mx-2"><i class="bi bi-pencil-square"></i>Edit</a>
+                            <a asp-page="/categories/delete" class="btn btn-danger mx-2" asp-route-id="@obj.Id"><i class="bi bi-trash-fill"></i>Delete</a>
                 </div>
             </td>
         </tr>
